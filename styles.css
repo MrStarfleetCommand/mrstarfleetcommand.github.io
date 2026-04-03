@@ -1,0 +1,63 @@
+:root{
+	--color-base: #202122;
+	--background-color-base: #ffffff;
+	--color-progressive: #3366cc;
+	--color-progressive--hover: #3056a9;
+	--color-progressive--active: #233566;
+	--color-visited: #6a60b0;
+	--color-visited--hover: #534fa3;
+	--color-visited--active: #353262;
+	--outline-color-progressive--focus: #3366cc;
+}
+@media screen and (prefers-color-scheme: dark){
+	:root{
+		--color-base: #eaecf0;
+		--background-color-base: #101418;
+		--color-progressive: #88a3e8;
+		--color-progressive--hover: #a6bbf5;
+		--color-progressive--active: #b6d4fb;
+		--color-visited: #a799cd;
+		--color-visited--hover: #c5b9dd;
+		--color-visited--active: #d9d0e9;
+	}
+}
+body{
+	background-color: var(--background-color-base);
+	color: var(--color-base);
+	font-family: sans-serif;
+	margin: 1em;
+}
+pre{
+	padding: 1em;
+	white-space: pre-wrap;
+	overflow-x: hidden;
+	word-wrap: break-word;
+}
+a{
+	color: var(--color-progressive);
+	text-decoration: none;
+}
+a:where(:not([role="button"])):active,
+a:where(:not([role="button"])):hover,
+a:where(:not([role="button"])):focus{
+	text-decoration: underline;
+}
+a:where(:not([role="button"])):focus-visible{
+	border-radius: 2px;
+	outline: solid 2px var(--outline-color-progressive--focus);
+}
+a:where(:not([role="button"])):hover{
+	color: var(--color-progressive--hover);
+}
+a:active{
+	color: var(--color-progressive--active);
+}
+a:visited{
+	color: var(--color-visited);
+}
+a:where(:not([role="button"])):visited:hover{
+	color: var(--color-visited--hover);
+}
+a:visited:active{
+	color: var(--color-visited--active);
+}
