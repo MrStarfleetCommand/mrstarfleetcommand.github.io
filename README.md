@@ -1,2 +1,2 @@
-# core-styles
-Basic light/dark theme styling
+# Linus's GitHub site
+The homepage for my GitHub site
