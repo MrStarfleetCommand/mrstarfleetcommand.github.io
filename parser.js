@@ -26,7 +26,7 @@ function txtToHtml(txt, pathPrefix = ''){
 		href = href.replace(/[\s\u2013\u2014]/g, '-');
 		href = href.replace(/([a-zA-Z])\./g, '$1');
 		href = href.replace(/['":;,]/g, '');
-		html[i] = `<a href="${href}">${displayText}</a>`;
+		html[i] = `<a href="${href}.html">${displayText}</a>`;
 	}
 
 	html = html.join('');
@@ -52,4 +52,9 @@ function htmlToTxt(html){
 	return txt;
 }
 
-export {txtToHtml, htmlToTxt};
+async function fetchSourceText(){
+	const sourcePage = `${location.pathname.replace(/\/+$/, '')}/index.html`.replace(/\.html(?:\/index\.html)?$/, '.txt');
+	return await (await fetch(sourcePage)).text();
+}
+
+export {txtToHtml, htmlToTxt, fetchSourceText};
