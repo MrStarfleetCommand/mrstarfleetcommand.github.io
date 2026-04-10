@@ -26,9 +26,8 @@ function txtToHtml(txt, pathPrefix = ''){
 		href = href.toLowerCase();
 		href = href.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 		href = href.replace(/[\s\u2013\u2014]/g, '-');
-		href = href.replace(/([a-zA-Z])\./g, '$1');
+		href = href.replace(/([a-zA-Z])\.(?!html$|txt$|css$|js$)/g, '$1');
 		href = href.replace(/['":;,]/g, '');
-		href = href.at(-1) === '/' ? href : `${href}.html`;
 		html[i] = `<a href="${href}">${displayText}</a>`;
 	}
 
