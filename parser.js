@@ -3,8 +3,8 @@ function txtToHtml(txt, pathPrefix = ''){
 	html = html.replace(/</g, '&lt;');
 	html = html.replace(/^\s+/, '');
 	html = html.replace(/\s+$/, '');
-	html = html.replace(new RegExp(`^ *\* *(?:\{${htmlAttributes('value', 'class', 'id', 'title')} *\} *)?(.*?[^\s]) *$`, 'gmi'), '<li $1>$2</li>');
-	html = html.replace(new RegExp(`^\{ *${htmlAttributes('class', 'id')} *\n((?:<li .*?>.+<\/li>\n*)+)\n\} *$`, 'gm'), '<ul $1>$2</ul>');
+	html = html.replace(new RegExp(`^ *\\* *(?:\\{${htmlAttributes('value', 'class', 'id', 'title')} *\\} *)?(.*?[^\\s]) *$`, 'gmi'), '<li $1>$2</li>');
+	html = html.replace(new RegExp(`^\\{ *${htmlAttributes('class', 'id')} *\\n((?:<li .*?>.+</li>\\n*)+)\\n\\} *$`, 'gm'), '<ul $1>$2</ul>');
 	html = html.replace(/^(======) *(.+?) *\1 *$/gm, '<h6 class="heading">$2</h6>');
 	html = html.replace(/^(=====) *(.+?) *\1 *$/gm, '<h5 class="heading">$2</h5>');
 	html = html.replace(/^(====) *(.+?) *\1 *$/gm, '<h4 class="heading">$2</h4>');
