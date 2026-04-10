@@ -19,16 +19,17 @@ function txtToHtml(txt, pathPrefix = ''){
 
 	for (let i = 1; i + 2 < html.length; i += 2){
 		const linkParts = html[i].split('|');
-		const displayText = linkParts[1] || linkParts[0].split('/').at(-1);
+		const displayText = linkParts[1] || linkParts[0].replace(/^.*?([^/]+)\/*$/, '$1');
 		let href = linkParts[0];
-		pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : pathPrefix;
+		pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : '';
 		href = href[0] === '/' && href[1] !== '/' ? href : `${pathPrefix}/${href}`;
 		href = href.toLowerCase();
 		href = href.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 		href = href.replace(/[\s\u2013\u2014]/g, '-');
 		href = href.replace(/([a-zA-Z])\./g, '$1');
 		href = href.replace(/['":;,]/g, '');
-		html[i] = `<a href="${href}.html">${displayText}</a>`;
+		href = href.at(-1) === '/' ? href : `${href}.html`;
+		html[i] = `<a href="${href}">${displayText}</a>`;
 	}
 
 	html = html.join('');
@@ -56,7 +57,12 @@ function htmlToTxt(html){
 }
 
 async function fetchSourceText(){
-	const sourcePage = `${location.pathname.replace(/\/+$/, '')}/index.html`.replace(/\.html(?:\/index\.html)?$/, '.txt');
+	let sourcePage = `${location.pathname}.txt`;
+	if (location.pathname.at(-1) === '/'){
+		sourcePage = `${location.pathname}index.txt`;
+	} else if (location.pathname.split('.').at(-1) === 'html'){
+		sourcePage = location.pathname.split('.').pop().push('txt').join('.');
+	}
 	return await (await fetch(sourcePage)).text();
 }
 
