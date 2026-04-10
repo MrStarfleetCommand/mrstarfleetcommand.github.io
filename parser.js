@@ -13,7 +13,6 @@ function txtToHtml(txt, pathPrefix = ''){
 	html = html.replace(/^ *([^<\s].*?) *$/gm, '<p>$1</p>');
 	html = html.replace(/''' *([^'].*?) *'''/g, '<span class="bold">$1</span>');
 	html = html.replace(/'' *([^'].*?) *''/g, '<span class="italic">$1</span>');
-	html = html.replace(/\[ *([^\s"]+?) +(.+?) *\]/g, '<a href="$1" class="external-link">$2</a>');
 	html = html.replace(/\s+/g, ' ');
 	html = html.replace(/&lt;!--([^]*?)-->/g, '<!--$1-->');
 	html = html.split(/\[\[(.+?)\]\]/);
@@ -32,6 +31,7 @@ function txtToHtml(txt, pathPrefix = ''){
 	}
 
 	html = html.join('');
+	html = html.replace(/\[ *([^\s"]+?) +(.+?) *\]/g, '<a href="$1" class="external-link">$2</a>');
 	return html;
 }
 
@@ -45,12 +45,12 @@ function htmlToTxt(html){
 	txt = txt.replace(/\s*<p>(.+?)<\/p>\s*/g, '\n\n$1\n\n');
 	txt = txt.replace(/<span class="bold">(.+?)<\/span>/g, `'''$1'''`);
 	txt = txt.replace(/<span class="italic">(.+?)<\/span>/g, `''$1''`);
-	// TODO: Add full support for decoding HTML links
-	txt = txt.replace(/<a href="(.+?)"(?: class="external-link")?>(.+?)<\/a>/g, '[$1 $2]');
 	txt = txt.replace(/\n\n\n+/g, '\n\n');
 	txt = txt.replace(/^(==+ .+? ==+\n)\n/gm, '$1');
 	txt = txt.replace(/^\s+/, '');
 	txt = txt.replace(/\s+$/, '');
+	// TODO: Add full support for decoding HTML links
+	txt = txt.replace(/<a href="(.+?)"(?: class="external-link")?>(.+?)<\/a>/g, '[$1 $2]');
 	return txt;
 }
 
