@@ -19,7 +19,7 @@ function txtToHtml(txt, pathPrefix = ''){
 
 	for (let i = 1; i < html.length; i += 2){
 		const linkParts = html[i].split('|');
-		const displayText = linkParts[1] || linkParts[0].replace(/^.*?([^/]+)\/*$/, '$1');
+		const displayText = linkParts[1] || linkParts[0].split('/').at(-1);
 		let href = linkParts[0];
 		pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : '';
 		href = href[0] === '/' && href[1] !== '/' ? href : `${pathPrefix}/${href}`;
