@@ -1,6 +1,6 @@
 See [https://github.com/MrStarfleetCommand my GitHub profile] for more.
 
 {
-* [[LCARS Database/]]
-* [[SVG Polygons/]]
+* [[LCARS Database]]
+* [[SVG Polygons]]
 }
