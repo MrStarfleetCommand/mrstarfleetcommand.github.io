@@ -17,7 +17,7 @@ function txtToHtml(txt, pathPrefix = ''){
 	html = html.replace(/&lt;!--([^]*?)-->/g, '<!--$1-->');
 	html = html.split(/\[\[(.+?)\]\]/);
 
-	for (let i = 1; i + 2 < html.length; i += 2){
+	for (let i = 1; i < html.length; i += 2){
 		const linkParts = html[i].split('|');
 		const displayText = linkParts[1] || linkParts[0].replace(/^.*?([^/]+)\/*$/, '$1');
 		let href = linkParts[0];
