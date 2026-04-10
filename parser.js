@@ -21,7 +21,8 @@ function txtToHtml(txt, pathPrefix = ''){
 		const linkParts = html[i].split('|');
 		const displayText = linkParts[1] || linkParts[0].split('/').at(-1);
 		let href = linkParts[0];
-		href = href[0] === '/' && href[1] !== '/' ? href : `/${pathPrefix}/${href}`;
+		pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : pathPrefix;
+		href = href[0] === '/' && href[1] !== '/' ? href : `${pathPrefix}/${href}`;
 		href = href.toLowerCase();
 		href = href.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 		href = href.replace(/[\s\u2013\u2014]/g, '-');
