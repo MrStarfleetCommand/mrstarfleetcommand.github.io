@@ -57,7 +57,12 @@ function htmlToTxt(html){
 }
 
 async function fetchSourceText(){
-	const sourcePage = location.pathname.at(-1) === '/' ? `${location.pathname}index.txt` : `${location.pathname}.txt`;
+	let sourcePage = `${location.pathname}.txt`;
+	if (location.pathname.at(-1) === '/'){
+		sourcePage = `${location.pathname}index.txt`;
+	} else if (location.pathname.split('.').at(-1) === 'html'){
+		sourcePage = location.pathname.split('.').pop().push('txt').join('.');
+	}
 	return await (await fetch(sourcePage)).text();
 }
 
