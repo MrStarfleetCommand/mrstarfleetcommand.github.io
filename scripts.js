@@ -6,6 +6,6 @@ import {txtToHtml, htmlToTxt, fetchSourceText} from '/parser.js';
 
 	heading.append(document.title);
 	parserOutput.id = 'parser-output';
-	parserOutput.append(txtToHtml(sourceText));
+	parserOutput.innerHTML = txtToHtml(sourceText);
 	document.body.append(heading, parserOutput);
 })();
