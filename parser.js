@@ -10,11 +10,11 @@ function txtToHtml(txt, pathPrefix = ''){
 	html = html.replace(/^(====) *(.+?) *\1 *$/gm, '<h4 class="heading">$2</h4>');
 	html = html.replace(/^(===) *(.+?) *\1 *$/gm, '<h3 class="heading">$2</h3>');
 	html = html.replace(/^(==) *(.+?) *\1 *$/gm, '<h2 class="heading">$2</h2>');
+	html = html.replace(/&lt;!--([^]*?)-->/g, '<!--$1-->');
 	html = html.replace(/^ *([^<\s].*?) *$/gm, '<p>$1</p>');
 	html = html.replace(/''' *([^'].*?) *'''/g, '<span class="bold">$1</span>');
 	html = html.replace(/'' *([^'].*?) *''/g, '<span class="italic">$1</span>');
 	html = html.replace(/\s+/g, ' ');
-	html = html.replace(/&lt;!--([^]*?)-->/g, '<!--$1-->');
 	html = html.split(/\[\[(.+?)\]\]/);
 
 	for (let i = 1; i < html.length; i += 2){
