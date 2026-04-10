@@ -47,16 +47,16 @@ a{
 	color: var(--color-progressive);
 	text-decoration: none;
 }
-a:where(:not([role="button"])):active,
-a:where(:not([role="button"])):hover,
-a:where(:not([role="button"])):focus{
+a:active,
+a:hover,
+a:focus{
 	text-decoration: underline;
 }
-a:where(:not([role="button"])):focus-visible{
+a:focus-visible{
 	border-radius: 2px;
 	outline: solid 2px var(--outline-color-progressive--focus);
 }
-a:where(:not([role="button"])):hover{
+a:hover{
 	color: var(--color-progressive--hover);
 }
 a:active{
@@ -65,7 +65,7 @@ a:active{
 a:visited{
 	color: var(--color-visited);
 }
-a:where(:not([role="button"])):visited:hover{
+a:visited:hover{
 	color: var(--color-visited--hover);
 }
 a:visited:active{
