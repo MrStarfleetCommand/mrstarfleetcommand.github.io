@@ -1,5 +1,6 @@
-function txtToHtml(txt, pathPrefix = ''){
+function txtToHtml(txt, pathPrefix){
 	let html = txt;
+	pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : '';
 	html = html.replace(/</g, '&lt;');
 	html = html.replace(/^\s+/, '');
 	html = html.replace(/\s+$/, '');
@@ -21,7 +22,6 @@ function txtToHtml(txt, pathPrefix = ''){
 		const linkParts = html[i].split('|');
 		const displayText = linkParts[1] || linkParts[0].split('/').at(-1);
 		let href = linkParts[0];
-		pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : '';
 		href = href[0] === '/' && href[1] !== '/' ? href : `${pathPrefix}/${href}`;
 		href = href.toLowerCase();
 		href = href.normalize('NFD').replace(/\p{Diacritic}/gu, '');
