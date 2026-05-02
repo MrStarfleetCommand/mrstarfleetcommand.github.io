@@ -1,9 +1,8 @@
 function txtToHtml(txt, pathPrefix){
 	let html = txt;
 	pathPrefix = pathPrefix ? pathPrefix.replace(/^\/*/, '/') : '';
+	html = html.trim();
 	html = html.replace(/</g, '&lt;');
-	html = html.replace(/^\s+/, '');
-	html = html.replace(/\s+$/, '');
 	html = html.replace(new RegExp(`^ *\\* *(?:\\{${htmlAttributes('value', 'class', 'id', 'title')} *\\} *)?(.*?[^\\s]) *$`, 'gmi'), '<li $1>$2</li>');
 	html = html.replace(new RegExp(`^\\{ *${htmlAttributes('class', 'id')} *\\n((?:<li .*?>.+</li>\\n*)+)\\n\\} *$`, 'gm'), '<ul $1>$2</ul>');
 	html = html.replace(/^(======) *(.+?) *\1 *$/gm, '<h6 class="heading">$2</h6>');
