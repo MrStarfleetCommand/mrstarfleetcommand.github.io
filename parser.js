@@ -59,10 +59,7 @@ async function fetchSourceText(){
 	if (location.pathname.at(-1) === '/'){
 		sourcePage = `${location.pathname}index.txt`;
 	} else if (location.pathname.split('.').at(-1) === 'html'){
-		// TODO: Simplify with `toSpliced()`
-		sourcePage = location.pathname.split('.');
-		sourcePage.splice(-1, 1, 'txt');
-		sourcePage = sourcePage.join('.');
+		sourcePage = location.pathname.split('.').toSpliced(-1, 1, 'txt').join('.');
 	}
 	return await (await fetch(sourcePage)).text();
 }
