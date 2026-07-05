@@ -1,6 +1,7 @@
 See [https://github.com/MrStarfleetCommand my GitHub profile] for more.
 
 {
-* [[LCARS Database]]
+* [[LCARS Database]] (WIP)
 * [[SVG Polygons]]
+* [[Color Calculator]]
 }
