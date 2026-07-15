@@ -1,4 +1,5 @@
 :root{
+	color-scheme: light dark;
 	--color-base: #202122;
 	--color-emphasized: #101418;
 	--color-progressive: #3366cc;
