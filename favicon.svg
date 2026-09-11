@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256">
+	<style>
+		:root{
+			color-scheme: light dark;
+			--color-success: #177860;
+		}
+		@media screen and (prefers-color-scheme: dark){
+			:root{
+				--color-success: #2cb491;
+			}
+		}
+	</style>
+	<circle xmlns="http://www.w3.org/2000/svg" r="40%" fill="var(--color-success)" cx="50%" cy="50%"/>
+</svg>
