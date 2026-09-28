@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256">
+	<link rel="icon" href="favicon.svg"/>
 	<style>
 		:root{
 			color-scheme: light dark;
-			/* --color-success: #177860; */
-			--color-success: red;
+			--color-success: #177860;
 		}
 		@media screen and (prefers-color-scheme: dark){
 			:root{
