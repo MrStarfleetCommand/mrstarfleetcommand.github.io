@@ -6,5 +6,5 @@ See [https://github.com/MrStarfleetCommand my GitHub profile] for more.
 * [[Color Calculator]]
 * [[Polygon Congruence]]
 * [[Timeline Calculator]]
-* [[JavaScript Documentation]]
+* [[JavaScript Docs|JavaScript Documentation]]
 }
